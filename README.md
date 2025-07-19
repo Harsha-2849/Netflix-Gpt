@@ -76,6 +76,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 * Create React app
 * Configured Tailwind css
+* Header
+* Login Form
+* Signup Form
 
 
 
@@ -104,3 +107,6 @@ git commit -m "Initial commit"
 git branch -M main
 git remote add origin git@github.com:YourUsername/YourRepoName.git
 git push -u origin main
+
+---------------------------------
+rafce- React arrow function export component shortcut 
