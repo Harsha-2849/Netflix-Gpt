@@ -1,6 +1,8 @@
 import React, {  useRef, useState } from "react";
 import Header from "../components/Header";
 import { checkValidData } from "../utils/validation";
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth';
+import {auth} from '../utils/firebase';
 export const Login = () => {
 
   const [isSignForm, setIsSignForm] = useState(true);
@@ -12,10 +14,48 @@ export const Login = () => {
 
 
   const handlevalid = ()=>{
-    const message = checkValidData(email.current.value,password.current.value,fullname.current.value);
+
+    const message = checkValidData(email.current.value,password.current.value,isSignForm ? null : fullname.current?.value);
     setErrormessage(message);
 
+    if(message) return;
 
+    if(!isSignForm){
+      //Sign Up form
+   createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+    .then((userCredential) => {
+
+    // Signed up 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrormessage(error.code + "-"+ error.message);
+
+
+    // ..
+  });
+
+    }
+    else{
+
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrormessage(error.code + " - " + error.message);
+
+        });
+    }
 
     // console.log(email.current.value);
     // console.log(password.current.value);
@@ -34,7 +74,7 @@ export const Login = () => {
         />
       </div>
       <form onSubmit={(e)=>{
-        e.preventDefault()
+        e.preventDefault();
       }}
       className="absolute p-12 bg-black w-3/12 my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
         <h1 className="font-bold text-3xl py-4">
