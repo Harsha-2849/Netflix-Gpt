@@ -85,6 +85,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 * Firebase Setup
 * deploying our app to production
 * Create SignIn/SignUp Form
+* Implement Sign in User Api
+* Created Redux Store with UserSlice
+
+* onAuthStateChanged()  is a Firebase Authentication listener that monitors the user's login state. It automatically triggers a callback whenever the user's authentication status changes (i.e., they sign in, sign out, or their session is restored).
+
+* why only this means Because Firebase auth is asynchronous and persistent, it stores a user's session in the browser (even after a refresh). onAuthStateChanged() helps you:
+
+1. Automatically restore the user session when the app reloads.
+
+2. Protect routes by checking if the user is logged in.
+
+3. Set user info in Redux/Context when login state changes.
+
+4. React to sign-out instantly in the UI.
+
 
 
 
