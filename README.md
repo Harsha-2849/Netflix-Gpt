@@ -87,6 +87,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 * Create SignIn/SignUp Form
 * Implement Sign in User Api
 * Created Redux Store with UserSlice
+* Bugfix Sign up User Display name and Profile picture Update 
+* Bugfix if the user  is not logged in redirect /browse to login page  and vice-versa
+* Unsubscribe to the on onAuthStateChanged callback
 
 * onAuthStateChanged()  is a Firebase Authentication listener that monitors the user's login state. It automatically triggers a callback whenever the user's authentication status changes (i.e., they sign in, sign out, or their session is restored).
 
@@ -99,6 +102,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 3. Set user info in Redux/Context when login state changes.
 
 4. React to sign-out instantly in the UI.
+
+* Implemented Signout
+* Update Profile 
+* Fetch from Tmdb Movies
+
 
 
 
